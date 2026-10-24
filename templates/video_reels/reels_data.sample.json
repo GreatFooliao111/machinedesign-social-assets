@@ -1,0 +1,65 @@
+{
+  "brand": {
+    "name_fa": "ماشین دیزاین",
+    "domain": "machinedesign.ir",
+    "collaborator_handle": "@h.vatan.doust",
+    "phone": "09358689829",
+    "phone_display": "۰۹۳۵ ۸۶۸ ۹۸۲۹",
+    "phone_intl": "+98 935 868 9829"
+  },
+  "campaign": {
+    "model_id": "KBDM-150",
+    "top_bar_title": "MACHINEDESIGN.IR",
+    "top_bar_badge": "LIVE DEMO"
+  },
+  "segments": [
+    {
+      "badge": "MOLD 01 // SAMOSA AUTO-FORMING",
+      "title": "تولید اتوماتیک سمبوسه مثلثی",
+      "subtitle": "سرعت تا ۱۰,۰۰۰ عدد در ساعت | بدون دخالت دست",
+      "duration_sec": 8.0
+    },
+    {
+      "badge": "MOLD 02 // HAND-CRIMPED DOUGH SEAL",
+      "title": "پیراشکی با دوخت دالبری سنتی",
+      "subtitle": "دوخت ۱۰۰٪ هوابند | بدون بازشدگی و ریزش در روغن",
+      "duration_sec": 15.0
+    },
+    {
+      "badge": "SYSTEM // DUAL ROLLER STAINLESS 304",
+      "title": "نورد دوبل بدون تخریب بافت خمیر",
+      "subtitle": "استیل ۳۰۴ صنایع غذایی | ۵ قالب تعویض‌پذیر",
+      "duration_sec": 10.0
+    },
+    {
+      "badge": "BUSINESS PLAN // ROI IN 90 DAYS",
+      "title": "بازگشت سرمایه کمتر از ۹۰ روز کاری",
+      "subtitle": "تولید روزانه تا ۸۰,۰۰۰ عدد | کاهش ۹۰٪ هزینه کارگری",
+      "duration_sec": 7.5
+    }
+  ],
+  "outro": {
+    "tag": "INDUSTRIAL FOOD AUTOMATION // KBDM-150",
+    "title": "ماشین دیزاین | MachineDesign.ir",
+    "subtitle": "خط تولید اتوماتیک پیراشکی، سمبوسه و جوشباره",
+    "features": [
+      "ظرفیت تولید: تا ۱۰,۰۰۰ عدد در ساعت",
+      "۵ قالب صنعتی تعویض‌پذیر در کمتر از ۱۵ دقیقه",
+      "سیستم نورد دوبل استیل ۳۰۴ صنایع غذایی",
+      "۱ سال گارانتی رسمی + ۱۰ سال تامین قطعات و قالب"
+    ],
+    "cta_button": "کلمه «پیراشکی» را دایرکت بفرستید 📩",
+    "consultation_label": "مشاوره فنی، خرید و استعلام قیمت دستگاه:",
+    "channels_footer": "@MACHINEDESIGN.IR  //  @H.VATAN.DOUST",
+    "duration_sec": 6.0
+  },
+  "audio": {
+    "voiceover_volume": 1.35,
+    "voiceover_delay_ms": 500,
+    "ambient_volume": 0.06,
+    "music_intro_volume": 0.35,
+    "music_ducked_volume": 0.10,
+    "music_outro_volume": 0.40,
+    "music_fadeout_duration_sec": 1.7
+  }
+}

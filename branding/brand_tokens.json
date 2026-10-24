@@ -1,0 +1,81 @@
+{
+  "brand": {
+    "name_fa": "ماشین دیزاین",
+    "name_en_prefix": "Machine",
+    "name_en_suffix": "Design",
+    "domain": "machinedesign.ir",
+    "instagram_business": "@machinedesign.ir",
+    "instagram_creator": "@h.vatan.doust",
+    "telegram": "@machinedesign_ir",
+    "bale": "@machinedesign_ir",
+    "phone": "+98 935 868 9829",
+    "phone_fa": "۰۹۳۵ ۸۶۸ ۹۸۲۹",
+    "phone_raw": "09358689829"
+  },
+  "colors": {
+    "neon_green": "#8ce70c",
+    "neon_stroke": "#6cc618",
+    "neon_glow": "rgba(140, 231, 12, 0.45)",
+    "bg_dark": "#060606",
+    "bg_surface": "#121212",
+    "bg_glass_dark": "rgba(8, 14, 24, 0.94)",
+    "text_white": "#ffffff",
+    "text_light": "#e2e2e2",
+    "text_muted": "#b8b8b8",
+    "border_subtle": "rgba(255, 255, 255, 0.12)",
+    "border_tech": "rgba(45, 68, 96, 0.95)",
+    "border_neon": "rgba(140, 231, 12, 0.45)"
+  },
+  "typography": {
+    "persian_primary": "'Vazirmatn', sans-serif",
+    "latin_display": "'Orbitron', sans-serif",
+    "latin_body": "'Inter', sans-serif"
+  },
+  "mobile_readability_scales": {
+    "reels_title_black_pt": 56,
+    "reels_subtitle_bold_pt": 40,
+    "reels_badge_latin_pt": 24,
+    "reels_header_latin_pt": 30,
+    "reels_phone_black_pt": 52,
+    "reels_cta_black_pt": 48,
+    "reels_feature_bold_pt": 36
+  },
+  "safe_zones_1080x1920": {
+    "top_header_y_min": 110,
+    "top_header_y_max": 220,
+    "lower_third_card_y_min": 1330,
+    "lower_third_card_y_max": 1670,
+    "right_action_icons_margin_x": 940,
+    "bottom_caption_safe_y": 1680
+  },
+  "dimensions": {
+    "story_portrait": {
+      "width": 1080,
+      "height": 1920,
+      "ratio": "9:16",
+      "mobile_sim_width": 390,
+      "mobile_sim_height": 693
+    },
+    "reel_portrait": {
+      "width": 1080,
+      "height": 1920,
+      "ratio": "9:16",
+      "mobile_sim_width": 390,
+      "mobile_sim_height": 693
+    },
+    "post_portrait": {
+      "width": 1080,
+      "height": 1350,
+      "ratio": "4:5",
+      "mobile_sim_width": 390,
+      "mobile_sim_height": 488
+    },
+    "post_square": {
+      "width": 1080,
+      "height": 1080,
+      "ratio": "1:1",
+      "mobile_sim_width": 390,
+      "mobile_sim_height": 390
+    }
+  }
+}
