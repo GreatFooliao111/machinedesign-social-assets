@@ -1,0 +1,122 @@
+{
+  "brand": {
+    "name_fa": "ماشین دیزاین",
+    "name_en_prefix": "Machine",
+    "name_en_suffix": "Design",
+    "handle": "@machinedesign.ir",
+    "website": "machinedesign.ir"
+  },
+  "slides": [
+    {
+      "id": 1,
+      "type": "hero_cover",
+      "number": "01 / 06",
+      "category": "تحلیل میدانی // رباتیک",
+      "eyebrow": "۸ سال پایش در محیط واقعی",
+      "title_main": "ماشین در سالیدورک گیرپاژ نمی‌کند!",
+      "lead": "چگونه ۸ سال کار در محیط‌های سخت، فلسفه طراحی مکانیک، سنسورها و اتوماسیون را دگرگون کرد؟ ۴ درس کلیدی از گزارش ویژه Machine Design.",
+      "image": "images/01-burro-grande-44.png",
+      "image_badge": "BURRO GRANDE // 8 YEARS FIELD DATA",
+      "swipe_cta": "ورق بزنید ←",
+      "footer_tag": "MACHINEDESIGN // ROBOTICS AUDIT"
+    },
+    {
+      "id": 2,
+      "type": "editorial_focus",
+      "number": "02 / 06",
+      "category": "سنسورها و ناوبری ۳ بعدی",
+      "lesson_num": "LESSON 01",
+      "title": "سقوط لایدار زیر تابش مستقیم خورشید",
+      "image": "images/lidar_optical_sensor.png",
+      "takeaways": [
+        {
+          "tag": "OPTICAL FLARE",
+          "title": "تداخل و شکست نور در گلخانه‌ها",
+          "desc": "تابش آفتاب و پوشش‌های پلاستیکی ابرنقاط لایدار را کاملاً آلوده و ناوبری را مختل کرد."
+        },
+        {
+          "tag": "IP69K SEALING",
+          "title": "الزام آب‌بندی صنعتی و نویزگیری",
+          "desc": "حرکت در خاک کارگاهی نیازمند مفاصل ایزوله و ترکیب لایدار با دوربین‌های عمق‌سنج بود."
+        }
+      ],
+      "footer_tag": "SENSORY AUDIT // FIELD LESSON"
+    },
+    {
+      "id": 3,
+      "type": "kpi_statement",
+      "number": "03 / 06",
+      "category": "ایمنی مدرن ماشین‌آلات",
+      "lesson_num": "LESSON 02",
+      "title": "پایان عصر فنس‌های فلزی سنتی",
+      "image": "images/02-sensory-robotics-sr1.png",
+      "kpis": [
+        { "val": "ISO 12100", "label": "استاندارد ایمنی داینامیک" },
+        { "val": "۴۵٪+", "label": "صرفه‌جویی در فضای سالن" }
+      ],
+      "editorial": "فنس‌های فلزی ۴۰٪ فضا را هدر می‌دهند و با هر ورود خط را می‌خوابانند. سیستم‌های مدرن با اسکن میدان نوری، سرعت ماشین را متناسب با فاصله اپراتور آرام می‌کنند، نه اینکه خط را متوقف کنند.",
+      "footer_tag": "DYNAMIC GUARDING // ISO 12100"
+    },
+    {
+      "id": 4,
+      "type": "mechanical_split",
+      "number": "04 / 06",
+      "category": "هوش مصنوعی فیزیکی (Physical AI)",
+      "lesson_num": "LESSON 03",
+      "title": "مرز تحریک: تبدیل کد به گشتاور فیزیکی",
+      "image": "images/04-robotic-arm-plant-floor.png",
+      "points": [
+        {
+          "num": "۰۱",
+          "title": "مرز تحریک مکانیکی (Actuation Boundary)",
+          "desc": "هوش مصنوعی تا زمانی که روی مانیتور است خطری ندارد؛ ریسک مرگبار زمانی آغاز می‌شود که تصمیم نرم‌افزار به گشتاور موتور یا جک هیدرولیک وصل شود."
+        },
+        {
+          "num": "۰۲",
+          "title": "اینترلاک و رله فیزیکی مستقل",
+          "desc": "هیچ کدی نباید بتواند رله‌های سخت‌افزاری استپ اضطراری (Hardware E-Stop) را دور بزند یا نادیده بگیرد. حافظه بلک‌باکس حرکتی الزامی است."
+        }
+      ],
+      "footer_tag": "PHYSICAL AI // HARDWARE INTERLOCK"
+    },
+    {
+      "id": 5,
+      "type": "case_study",
+      "number": "05 / 06",
+      "category": "طراحی برای ساخت و مونتاژ",
+      "lesson_num": "LESSON 04",
+      "title": "تعمیرپذیری DFMA در شرایط سخت کارگاه",
+      "image": "images/03-asylon-dronedog.png",
+      "insights": [
+        {
+          "title": "تعویض سریع قطعات مصرفی",
+          "desc": "تکنسین برای تعویض یک یاتاقان نباید کل شاسی را باز کند؛ طراحی ماژولار تا ۴۰٪ هزینه خواب خط را کاهش داد."
+        },
+        {
+          "title": "دفع حرارت و آب‌بندی تلفیقی",
+          "desc": "درایورهای توان بالا در تابستان نیازمند مسیرهای هوایی ایزوله و هیت‌سینک بدون نفوذ رطوبت و گردوغبار هستند."
+        }
+      ],
+      "footer_tag": "DFMA DISCIPLINE // SHOP-FLOOR REALITY"
+    },
+    {
+      "id": 6,
+      "type": "executive_closing",
+      "number": "06 / 06",
+      "category": "مشاوره و خدمات مهندسی",
+      "title": "ماشین دیزاین؛ از نرم‌افزار تا کف کارگاه",
+      "subtitle": "طراحی ماشین‌آلات صنعتی، رفع توقف خطوط تولید و اجرای اصول DFMA",
+      "pillars": [
+        { "num": "۰۱", "text": "طراحی خطوط اتوماسیون، کانوایر و مکانیزم‌های سفارشی" },
+        { "num": "۰۲", "text": "عیب‌یابی تخصصی ارتعاشات، یاتاقان‌ها و کاهش توقف خط" },
+        { "num": "۰۳", "text": "تطبیق استانداردهای ایمنی صنعتی (ISO 12100 / ISO 13849)" }
+      ],
+      "cta": {
+        "badge": "CONSULTATION // همکاری و پروژه",
+        "action": "ارسال پیام در دایرکت جهت مشاوره فنی",
+        "website": "machinedesign.ir"
+      },
+      "footer_tag": "MACHINEDESIGN // INDUSTRIAL SOLUTIONS"
+    }
+  ]
+}

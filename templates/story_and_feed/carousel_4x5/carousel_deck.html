@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کاروسل صنعتی ماشین دیزاین - ۴:۵</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-green: #8ce70c;
+      --neon-stroke: #6cc618;
+      --neon-dim: rgba(140, 231, 12, 0.12);
+      --neon-border: rgba(140, 231, 12, 0.35);
+      --bg-surface: #070908;
+      --bg-card: radial-gradient(circle at 18% 18%, #161a17 0%, #090c0a 65%, #040504 100%);
+      --text-white: #ffffff;
+      --text-light: #d1d5db;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-card: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: #040504;
+      font-family: 'Vazirmatn', sans-serif;
+      padding: 40px 20px 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-white);
+      direction: rtl;
+    }
+
+    .carousel-deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 32px;
+      max-width: 1300px;
+      width: 100%;
+      justify-items: center;
+    }
+
+    /* 4:5 Canvas: 360px x 450px -> Renders 1080x1350 at 3x scale */
+    .slide {
+      position: relative;
+      width: 360px;
+      height: 450px;
+      background: var(--bg-card);
+      border-top: 4px solid var(--neon-green);
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      color: var(--text-white);
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* Subtle CAD blueprint grid */
+    .bg-tech-grid {
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        var(--bg-card);
+      background-size: 20px 20px, 20px 20px, 100% 100%;
+    }
+
+    /* -----------------------------------------
+       1. UNIVERSAL TOP HEADER (24px Grid)
+       ----------------------------------------- */
+    .slide-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px 0;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .brand-mark {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .brand-mark span {
+      color: var(--neon-green);
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 1px;
+      background: rgba(10, 14, 10, 0.9);
+      border: 1px solid var(--neon-border);
+      padding: 2.5px 8px;
+      line-height: 1;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    /* -----------------------------------------
+       2. UNIVERSAL BOTTOM FOOTER
+       ----------------------------------------- */
+    .slide-bottom-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px 12px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+      z-index: 10;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .footer-slug {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+    }
+    .footer-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 0.5px;
+    }
+
+    /* -----------------------------------------
+       TYPOGRAPHIC COHESION (Headings & Eyebrows)
+       ----------------------------------------- */
+    .slide-body {
+      padding: 12px 18px 8px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .header-stack {
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+
+    .eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .category-pill {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--neon-green);
+      background: var(--neon-dim);
+      border: 1px solid var(--neon-border);
+      padding: 2px 7px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .eyebrow-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: #9ca3af;
+      letter-spacing: 0.5px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    h2.slide-h2 {
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+    h2.slide-h2 span {
+      color: var(--neon-green);
+    }
+
+    /* -----------------------------------------
+       SLIDE 1: HERO COVER
+       ----------------------------------------- */
+    .s1-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .s1-photo-frame {
+      position: relative;
+      width: 100%;
+      height: 195px;
+      border: 1px solid var(--neon-border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+    .s1-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) brightness(0.92);
+    }
+    .s1-photo-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(8, 12, 8, 0.9);
+      border-left: 3px solid var(--neon-green);
+      padding: 3px 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 0.5px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .s1-lead {
+      font-size: 11.5px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .s1-action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .s1-swipe-prompt {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* -----------------------------------------
+       SLIDE 2: EDITORIAL FOCUS (LIDAR)
+       ----------------------------------------- */
+    .s2-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .s2-visual {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      border: 1px solid var(--border-card);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .s2-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.15) brightness(0.88);
+    }
+    .s2-takeaways {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .takeaway-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-right: 12px;
+      border-right: 2px solid var(--neon-green);
+    }
+    .takeaway-tag {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 0.5px;
+      direction: ltr;
+      unicode-bidi: isolate;
+      text-align: right;
+    }
+    .takeaway-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .takeaway-desc {
+      font-size: 10.5px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* -----------------------------------------
+       SLIDE 3: KPI STATEMENT (ISO 12100)
+       ----------------------------------------- */
+    .s3-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .s3-visual {
+      width: 100%;
+      height: 130px;
+      border: 1px solid var(--border-card);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .s3-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .kpi-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .kpi-block {
+      background: rgba(140, 231, 12, 0.05);
+      border: 1px solid var(--neon-border);
+      border-radius: 4px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .kpi-val {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--neon-green);
+      margin-bottom: 2px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .kpi-lbl {
+      font-size: 10px;
+      color: var(--text-light);
+    }
+    .s3-text {
+      font-size: 11px;
+      color: var(--text-light);
+      line-height: 1.55;
+      padding: 0 4px;
+    }
+
+    /* -----------------------------------------
+       SLIDE 4 & 5: MECHANICAL SPLIT & DFMA
+       ----------------------------------------- */
+    .split-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .split-banner {
+      width: 100%;
+      height: 125px;
+      border: 1px solid var(--border-card);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .split-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .points-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .point-num-box {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--neon-green);
+      background: var(--neon-dim);
+      border: 1px solid var(--neon-border);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .point-detail h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .point-detail p {
+      font-size: 10.5px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* -----------------------------------------
+       SLIDE 6: EXECUTIVE CLOSING (SERVICES & CTA)
+       ----------------------------------------- */
+    .s6-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .s6-lead {
+      font-size: 11.5px;
+      color: var(--neon-green);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .pillars-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pillar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-light);
+      line-height: 1.4;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 10px;
+      border-radius: 4px;
+    }
+    .pillar-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--neon-green);
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .cta-card {
+      background: radial-gradient(circle at 50% 50%, rgba(140, 231, 12, 0.12) 0%, rgba(8, 12, 8, 0.8) 100%);
+      border: 1px solid var(--neon-border);
+      border-radius: 4px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .cta-badge {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .cta-action {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .cta-web {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      color: var(--neon-green);
+      letter-spacing: 0.8px;
+      direction: ltr;
+      unicode-bidi: isolate;
+      padding-top: 4px;
+      border-top: 1px solid rgba(140, 231, 12, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="carousel-deck" id="carouselDeck">
+    <!-- Generated dynamically via JavaScript -->
+  </main>
+
+  <script>
+    async function loadAndRender() {
+      const res = await fetch('carousel_data.json');
+      const data = await res.json();
+      const deck = document.getElementById('carouselDeck');
+      const b = data.brand;
+
+      let html = '';
+
+      data.slides.forEach(s => {
+        // Universal Top Header
+        const topHeader = `
+          <div class="slide-top-header">
+            <div class="brand-mark">
+              <span>${b.name_en_prefix}</span>${b.name_en_suffix}
+            </div>
+            <div class="slide-counter">${s.number}</div>
+          </div>
+        `;
+
+        // Universal Bottom Footer
+        const bottomFooter = `
+          <div class="slide-bottom-footer">
+            <div class="footer-slug">${s.footer_tag}</div>
+            <div class="footer-brand">${b.website}</div>
+          </div>
+        `;
+
+        if (s.id === 1) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-1">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="s1-wrap">
+                <div>
+                  <div class="header-stack">
+                    <div class="eyebrow-row">
+                      <span class="category-pill">${s.category}</span>
+                      <span class="eyebrow-text">${s.eyebrow}</span>
+                    </div>
+                    <h2 class="slide-h2">${s.title_main}</h2>
+                  </div>
+                  <div class="s1-photo-frame">
+                    <img src="${s.image}" alt="Robotics Cover">
+                    <div class="s1-photo-badge">${s.image_badge}</div>
+                  </div>
+                  <p class="s1-lead">${s.lead}</p>
+                </div>
+                <div class="s1-action-row">
+                  <span class="s1-swipe-prompt">${s.swipe_cta}</span>
+                  <span style="font-family:'Orbitron',sans-serif; font-size:10px; color:#9ca3af; direction:ltr; unicode-bidi:isolate;">
+                    <span style="color:var(--neon-green)">@</span>machinedesign.ir
+                  </span>
+                </div>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        } else if (s.id === 2) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-2">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="s2-grid">
+                <div class="header-stack">
+                  <div class="eyebrow-row">
+                    <span class="category-pill">${s.category}</span>
+                    <span class="eyebrow-text">${s.lesson_num}</span>
+                  </div>
+                  <h2 class="slide-h2">${s.title}</h2>
+                </div>
+                <div class="s2-visual">
+                  <img src="${s.image}" alt="LiDAR Sensor">
+                </div>
+                <div class="s2-takeaways">
+                  ${s.takeaways.map(t => `
+                    <div class="takeaway-row">
+                      <span class="takeaway-tag">${t.tag}</span>
+                      <h4 class="takeaway-title">${t.title}</h4>
+                      <p class="takeaway-desc">${t.desc}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        } else if (s.id === 3) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-3">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="s3-grid">
+                <div class="header-stack">
+                  <div class="eyebrow-row">
+                    <span class="category-pill">${s.category}</span>
+                    <span class="eyebrow-text">${s.lesson_num}</span>
+                  </div>
+                  <h2 class="slide-h2">${s.title}</h2>
+                </div>
+                <div class="s3-visual">
+                  <img src="${s.image}" alt="Sensory Robotics">
+                </div>
+                <div class="kpi-duo">
+                  ${s.kpis.map(k => `
+                    <div class="kpi-block">
+                      <div class="kpi-val">${k.val}</div>
+                      <div class="kpi-lbl">${k.label}</div>
+                    </div>
+                  `).join('')}
+                </div>
+                <p class="s3-text">${s.editorial}</p>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        } else if (s.id === 4) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-4">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="split-grid">
+                <div class="header-stack">
+                  <div class="eyebrow-row">
+                    <span class="category-pill">${s.category}</span>
+                    <span class="eyebrow-text">${s.lesson_num}</span>
+                  </div>
+                  <h2 class="slide-h2">${s.title}</h2>
+                </div>
+                <div class="split-banner">
+                  <img src="${s.image}" alt="Plant Floor Arm">
+                </div>
+                <div class="points-stack">
+                  ${s.points.map(p => `
+                    <div class="point-item">
+                      <div class="point-num-box">${p.num}</div>
+                      <div class="point-detail">
+                        <h4>${p.title}</h4>
+                        <p>${p.desc}</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        } else if (s.id === 5) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-5">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="split-grid">
+                <div class="header-stack">
+                  <div class="eyebrow-row">
+                    <span class="category-pill">${s.category}</span>
+                    <span class="eyebrow-text">${s.lesson_num}</span>
+                  </div>
+                  <h2 class="slide-h2">${s.title}</h2>
+                </div>
+                <div class="split-banner">
+                  <img src="${s.image}" alt="DroneDog DFMA">
+                </div>
+                <div class="points-stack">
+                  ${s.insights.map((ins, idx) => `
+                    <div class="point-item">
+                      <div class="point-num-box">۰${idx + 1}</div>
+                      <div class="point-detail">
+                        <h4>${ins.title}</h4>
+                        <p>${ins.desc}</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        } else if (s.id === 6) {
+          html += `
+          <article class="slide bg-tech-grid" id="slide-6">
+            ${topHeader}
+            <div class="slide-body">
+              <div class="s6-grid">
+                <div class="header-stack">
+                  <div class="eyebrow-row">
+                    <span class="category-pill">${s.category}</span>
+                  </div>
+                  <h2 class="slide-h2">${s.title}</h2>
+                  <p class="s6-lead">${s.subtitle}</p>
+                </div>
+                <div class="pillars-stack">
+                  ${s.pillars.map(pl => `
+                    <div class="pillar-row">
+                      <span class="pillar-num">${pl.num}</span>
+                      <span>${pl.text}</span>
+                    </div>
+                  `).join('')}
+                </div>
+                <div class="cta-card">
+                  <div class="cta-badge">${s.cta.badge}</div>
+                  <div class="cta-action">${s.cta.action}</div>
+                  <div class="cta-web">${s.cta.website}</div>
+                </div>
+              </div>
+            </div>
+            ${bottomFooter}
+          </article>`;
+        }
+      });
+
+      deck.innerHTML = html;
+    }
+
+    loadAndRender();
+  </script>
+</body>
+</html>

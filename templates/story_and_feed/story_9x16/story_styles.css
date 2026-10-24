@@ -1,0 +1,649 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --neon-green: #8ce70c;
+  --neon-stroke: #6cc618;
+  --neon-glow: rgba(140, 231, 12, 0.45);
+  --bg-dark: #060606;
+  --bg-card: radial-gradient(circle at 18% 18%, #1c1f1c 0%, #0a0c0a 65%, #020302 100%);
+  --text-white: #ffffff;
+  --text-light: #eeeeee;
+  --text-muted: #b0b0b0;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-neon: rgba(140, 231, 12, 0.45);
+  --font-fa: 'Vazirmatn', sans-serif;
+  --font-en: 'Orbitron', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #050705;
+  font-family: var(--font-fa);
+  direction: rtl;
+  color: var(--text-white);
+  padding: 30px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Control Toolbar */
+.top-toolbar {
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+  background: rgba(16, 20, 16, 0.95);
+  border: 1px solid var(--border-neon);
+  border-radius: 8px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  margin-bottom: 30px;
+  max-width: 900px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.toolbar-brand {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--neon-green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 1px;
+  direction: ltr;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-tool {
+  background: #141714;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 6px 14px;
+  font-family: var(--font-fa);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.btn-tool:hover, .btn-tool.active {
+  background: var(--neon-green);
+  color: #000;
+  border-color: var(--neon-green);
+  font-weight: 700;
+}
+
+/* Header */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.showcase-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.showcase-header h1 span { color: var(--neon-green); }
+.showcase-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Story Deck Container */
+.story-deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  max-width: 1600px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Base Story Card (9:16 vertical ratio -> 360x640 px preview, renders 1080x1920 in 3x scale) */
+.story-card {
+  position: relative;
+  width: 360px;
+  height: 640px;
+  background: var(--bg-card);
+  border-top: 5px solid var(--neon-green);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s;
+}
+.story-card:hover {
+  box-shadow: 0 30px 70px rgba(140, 231, 12, 0.2), 0 0 0 1px rgba(140, 231, 12, 0.5);
+  transform: translateY(-4px);
+}
+
+/* CAD Technical Blueprint Grid */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    var(--bg-card);
+  background-size: 24px 24px, 24px 24px, 100% 100%;
+}
+
+/* Universal Image Slot with Industrial Contrast */
+.slot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(100%) contrast(1.18) brightness(0.95);
+}
+
+/* Universal Story Top Header */
+.story-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 20px 0 20px;
+  flex-shrink: 0;
+}
+
+.story-brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--border-neon);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-en);
+  font-size: 11px;
+  direction: ltr;
+}
+.story-brand-pill strong { color: var(--neon-green); }
+
+.story-tag-badge {
+  background: var(--neon-green);
+  color: #060606;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3.5px 10px;
+  border-radius: 2px;
+}
+
+/* Universal Story Bottom Footer */
+.story-footer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 22px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.story-footer .web-tag {
+  font-family: var(--font-en);
+  color: var(--neon-green);
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  direction: ltr;
+}
+
+/* Animations */
+@keyframes spinGear {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; filter: drop-shadow(0 0 2px var(--neon-green)); }
+  50% { opacity: 0.85; filter: drop-shadow(0 0 10px var(--neon-green)); }
+}
+
+@keyframes scanlineAnim {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.anim-gear-spin {
+  animation: spinGear 24s linear infinite;
+  transform-origin: center center;
+}
+
+.anim-pulse {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* =======================================================
+   STORY 01: HOOK / CRISIS (هشدار توقف خط)
+   ======================================================= */
+.s1-content {
+  position: relative;
+  z-index: 5;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.s1-headline h2 {
+  font-size: 24px;
+  line-height: 1.45;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.s1-headline h2 span {
+  color: var(--neon-green);
+  display: block;
+}
+
+.s1-hex-frame {
+  position: relative;
+  width: 240px;
+  height: 220px;
+  margin: 10px auto;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--neon-green);
+  padding: 3px;
+}
+.s1-hex-inner {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: #111;
+  overflow: hidden;
+}
+
+.s1-desc-box {
+  background: rgba(14, 16, 14, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-right: 3px solid var(--neon-green);
+  padding: 14px 16px;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+}
+.s1-desc-box p {
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--text-light);
+}
+
+.s1-swipe-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--neon-green);
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* =======================================================
+   STORY 02: HARDWARE ANATOMY (کالبدشکافی قطعه)
+   ======================================================= */
+.s2-content {
+  position: relative;
+  z-index: 5;
+  padding: 12px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.s2-title-row h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.s2-oct-wrap {
+  position: relative;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+.s2-oct-outer {
+  width: 190px;
+  height: 190px;
+  background: var(--neon-green);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  padding: 2.5px;
+  z-index: 2;
+}
+.s2-oct-inner {
+  width: 100%;
+  height: 100%;
+  background: #151515;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  overflow: hidden;
+}
+
+.s2-callout {
+  position: absolute;
+  z-index: 4;
+  background: rgba(8, 10, 8, 0.94);
+  border: 1px solid var(--border-neon);
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.s2-callout strong {
+  color: var(--neon-green);
+  font-family: var(--font-en);
+  display: block;
+  font-size: 11px;
+  direction: ltr;
+}
+.c-tr { top: 12px; right: 0; }
+.c-tl { top: 12px; left: 0; text-align: left; }
+.c-br { bottom: 12px; right: 0; }
+.c-bl { bottom: 12px; left: 0; text-align: left; }
+
+.s2-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.s2-spec-box {
+  background: rgba(18, 22, 18, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-top: 2px solid var(--neon-green);
+  padding: 10px 12px;
+}
+.s2-spec-box h5 {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.s2-spec-box p {
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* =======================================================
+   STORY 03: CASE STUDY (پروژه میدانی کارخانه‌ای)
+   ======================================================= */
+.s3-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.s3-bg-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4,6,4,0.7) 0%, rgba(4,6,4,0.3) 30%, rgba(4,6,4,0.95) 75%);
+}
+
+.s3-content {
+  position: relative;
+  z-index: 5;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.s3-glass-card {
+  background: rgba(14, 18, 14, 0.88);
+  border: 1px solid var(--border-neon);
+  border-radius: 6px;
+  padding: 18px;
+  backdrop-filter: blur(12px);
+  margin-bottom: 14px;
+}
+
+.s3-metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.s3-metric-cell {
+  background: rgba(140, 231, 12, 0.08);
+  border: 1px solid rgba(140, 231, 12, 0.3);
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+.s3-metric-val {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--neon-green);
+  font-family: var(--font-fa);
+}
+.s3-metric-lbl {
+  font-size: 10.5px;
+  color: #e0e0e0;
+  margin-top: 2px;
+}
+.s3-body-text {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--text-light);
+}
+
+/* =======================================================
+   STORY 04: INTERACTIVE POLL (کوییز تخصصی مهندسی)
+   ======================================================= */
+.s4-content {
+  position: relative;
+  z-index: 5;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.s4-question-box {
+  background: rgba(20, 24, 20, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--neon-green);
+  padding: 16px 14px;
+  border-radius: 6px;
+  margin: 12px 0 16px 0;
+}
+.s4-question-box h3 {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.s4-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.s4-option-btn {
+  position: relative;
+  background: #111411;
+  border: 1px solid #283028;
+  padding: 12px 14px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  overflow: hidden;
+}
+.s4-option-btn.correct {
+  border-color: var(--neon-green);
+  background: rgba(140, 231, 12, 0.08);
+}
+.s4-option-btn .vote-perc {
+  font-family: var(--font-fa);
+  color: var(--neon-green);
+  font-weight: 800;
+}
+
+.s4-note-card {
+  background: rgba(140, 231, 12, 0.06);
+  border-right: 3px solid var(--neon-green);
+  padding: 12px 14px;
+  border-radius: 2px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* =======================================================
+   STORY 05: CONVERSION CTA (دعوت به اقدام و رزرو مشاوره)
+   ======================================================= */
+.s5-top-photo {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  border-bottom: 3px solid var(--neon-green);
+  overflow: hidden;
+}
+
+.s5-content {
+  position: relative;
+  z-index: 5;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.s5-headline h3 {
+  font-size: 18.5px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.s5-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.s5-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+.s5-bullet-item::before {
+  content: "■";
+  color: var(--neon-green);
+  font-size: 9px;
+  margin-top: 3px;
+}
+
+.s5-cta-button {
+  background: var(--neon-green);
+  color: #060606;
+  font-size: 13.5px;
+  font-weight: 900;
+  text-align: center;
+  padding: 14px 18px;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(140, 231, 12, 0.35);
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Modal Live Editor */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #111;
+  border: 1px solid var(--neon-green);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.modal-header h3 {
+  font-family: var(--font-fa);
+  color: var(--neon-green);
+  font-size: 16px;
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+.modal-textarea {
+  flex: 1;
+  min-height: 380px;
+  background: #080808;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #8ce70c;
+  font-family: 'Consolas', monospace;
+  font-size: 12px;
+  padding: 14px;
+  direction: ltr;
+  resize: vertical;
+  line-height: 1.4;
+  outline: none;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
