@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <title>Carousel Molds</title>
+  
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --neon: #8ce70c;
+        --neon-dim: rgba(140, 231, 12, 0.12);
+        --neon-border: rgba(140, 231, 12, 0.38);
+        --bg-card: radial-gradient(circle at 18% 18%, #161a17 0%, #090c0a 65%, #040504 100%);
+        --text-white: #ffffff;
+        --text-light: #d1d5db;
+        --text-muted: #9ca3af;
+        --border-subtle: rgba(255, 255, 255, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        background-color: #040504;
+        font-family: 'Vazirmatn', sans-serif;
+        padding: 40px;
+        color: var(--text-white);
+        direction: rtl;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+      }
+      .slide {
+        position: relative;
+        width: 360px;
+        height: 450px;
+        background: var(--bg-card);
+        border-top: 4px solid var(--neon);
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        user-select: none;
+      }
+      .bg-tech-grid {
+        background-image: 
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          var(--bg-card);
+        background-size: 20px 20px, 20px 20px, 100% 100%;
+      }
+      .slide-top-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px 0;
+        flex-shrink: 0;
+        z-index: 10;
+      }
+      .brand-mark {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: #fff;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .brand-mark span {
+        color: var(--neon);
+      }
+      .slide-counter {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 10.5px;
+        font-weight: 700;
+        color: var(--neon);
+        letter-spacing: 1px;
+        background: rgba(10, 14, 10, 0.9);
+        border: 1px solid var(--neon-border);
+        padding: 2.5px 7px;
+        line-height: 1;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .slide-bottom-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 18px 10px;
+        border-top: 1px solid var(--border-subtle);
+        background: rgba(0, 0, 0, 0.45);
+        flex-shrink: 0;
+        z-index: 10;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .footer-slug {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8px;
+        font-weight: 600;
+        color: var(--text-muted);
+        letter-spacing: 0.6px;
+      }
+      .footer-brand {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: var(--neon);
+      }
+      .slide-body {
+        padding: 10px 18px 8px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+      }
+      .header-stack {
+        margin-bottom: 8px;
+        flex-shrink: 0;
+      }
+      .eyebrow-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+      .category-pill {
+        font-size: 8.5px;
+        font-weight: 700;
+        color: var(--neon);
+        background: var(--neon-dim);
+        border: 1px solid var(--neon-border);
+        padding: 2px 6px;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+      .eyebrow-text {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: #9ca3af;
+        letter-spacing: 0.5px;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      h2.slide-h2 {
+        font-size: 14.5px;
+        font-weight: 800;
+        line-height: 1.35;
+        color: #ffffff;
+        margin: 0;
+      }
+      h2.slide-h2 span {
+        color: var(--neon);
+      }
+      .s1-wrap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+      }
+      .s1-photo-frame {
+        position: relative;
+        width: 100%;
+        height: 195px;
+        border: 1px solid var(--neon-border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+        background: #000;
+      }
+      .s1-photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: contrast(1.08) brightness(0.95);
+      }
+      .s1-photo-badge {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        background: rgba(8, 12, 8, 0.92);
+        border-left: 3px solid var(--neon);
+        padding: 3px 7px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: var(--neon);
+        letter-spacing: 0.5px;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .s1-lead {
+        font-size: 11px;
+        color: var(--text-light);
+        line-height: 1.55;
+      }
+      .s1-action-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 6px;
+        border-top: 1px solid var(--border-subtle);
+      }
+      .s1-swipe-prompt {
+        font-size: 10.5px;
+        font-weight: 800;
+        color: var(--neon);
+      }
+      .split-banner {
+        width: 100%;
+        height: 120px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        background: #000;
+      }
+      .split-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .points-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+      .point-item {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        background: rgba(18, 22, 19, 0.7);
+        border: 1px solid var(--border-subtle);
+        border-right: 3px solid var(--neon);
+        padding: 6px 9px;
+        border-radius: 3px;
+      }
+      .point-num-box {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 10.5px;
+        font-weight: 800;
+        color: var(--neon);
+        flex-shrink: 0;
+        padding-top: 1px;
+      }
+      .point-detail h4 {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+      .point-detail p {
+        font-size: 9.2px;
+        color: var(--text-muted);
+        line-height: 1.45;
+      }
+      .kpi-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .kpi-block {
+        background: rgba(140, 231, 12, 0.06);
+        border: 1px solid var(--neon-border);
+        padding: 8px;
+        border-radius: 4px;
+        text-align: center;
+      }
+      .kpi-val {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        color: var(--neon);
+        line-height: 1.1;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .kpi-lbl {
+        font-size: 9px;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-top: 3px;
+      }
+      .editorial-box {
+        background: rgba(18, 22, 19, 0.65);
+        border: 1px solid var(--border-subtle);
+        padding: 9px;
+        border-radius: 4px;
+        font-size: 10px;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+      .pillars-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+      .pillar-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        padding: 5px 9px;
+        border-radius: 3px;
+        font-size: 9.8px;
+        color: var(--text-light);
+      }
+      .pillar-num {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 9.5px;
+        font-weight: 800;
+        color: var(--neon);
+        flex-shrink: 0;
+      }
+      .cta-card {
+        background: radial-gradient(circle at 50% 0%, rgba(140, 231, 12, 0.18) 0%, rgba(14, 18, 14, 0.95) 100%);
+        border: 1px solid var(--neon);
+        border-radius: 4px;
+        padding: 9px;
+        text-align: center;
+      }
+      .cta-badge {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8px;
+        font-weight: 800;
+        color: #9ca3af;
+        letter-spacing: 0.8px;
+        margin-bottom: 3px;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .cta-action {
+        font-size: 11.5px;
+        font-weight: 800;
+        color: var(--neon);
+        margin-bottom: 2px;
+      }
+      .cta-web {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: #fff;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+    </style>
+    
+</head>
+<body>
+  <!-- Slide 1 -->
+  <article class="slide bg-tech-grid" id="slide-1">
+    <div class="slide-top-header">
+      <div class="brand-mark"><span>Machine</span>Design</div>
+      <div class="slide-counter">01 / 04</div>
+    </div>
+    <div class="slide-body">
+      <div class="s1-wrap">
+        <div>
+          <div class="header-stack">
+            <div class="eyebrow-row">
+              <span class="category-pill">تنوع محصولات بازار</span>
+              <span class="eyebrow-text">IRANIAN CUISINE</span>
+            </div>
+            <h2 class="slide-h2">از سمبوسه خوزستانی تا <span>پیراشکی دالبری و کلمپه</span></h2>
+          </div>
+          <div class="s1-photo-frame">
+            <img src="generated_iranian_molds_matrix.jpg" alt="Iranian Pastries Matrix">
+            <div class="s1-photo-badge">5 MODULAR MOLDS // HERMETIC SEAL</div>
+          </div>
+          <p class="s1-lead">فکر نکنید این دستگاه فقط برای غذاهای خارجی است! ما قالب‌ها را دقیقاً متناسب با فرهنگ غذایی و سلیقه بازار ایران سفارشی کرده‌ایم تا چندین خط تولید سودآور راه‌اندازی کنید.</p>
+        </div>
+        <div class="s1-action-row">
+          <span class="s1-swipe-prompt">ورق بزنید ←</span>
+          <span style="font-family:'Orbitron',sans-serif; font-size:9.5px; color:#9ca3af; direction:ltr;">@h.vatan.doust</span>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom-footer">
+      <div class="footer-slug">SLOT 02 // IRANIAN MOLDS</div>
+      <div class="footer-brand">machinedesign.ir</div>
+    </div>
+  </article>
+
+  <!-- Slide 2 -->
+  <article class="slide bg-tech-grid" id="slide-2">
+    <div class="slide-top-header">
+      <div class="brand-mark"><span>Machine</span>Design</div>
+      <div class="slide-counter">02 / 04</div>
+    </div>
+    <div class="slide-body">
+      <div class="header-stack">
+        <div class="eyebrow-row">
+          <span class="category-pill">ویترین قالب‌های ماژولار</span>
+          <span class="eyebrow-text">5 POPULAR PRODUCTS</span>
+        </div>
+        <h2 class="slide-h2">یک پلتفرم، <span>۵ محصول پرفروش بازار</span></h2>
+      </div>
+      <div class="split-banner">
+        <img src="asset_04_food_matrix_commercial.jpg" alt="Commercial Food Matrix">
+      </div>
+      <div class="points-stack">
+        <div class="point-item">
+          <div class="point-num-box">۰۱</div>
+          <div class="point-detail">
+            <h4>سمبوسه مثلثی خوزستانی و پیتزایی (۲۵ تا ۳۵ گرم)</h4>
+            <p>دوخت محکم سنتی با ظاهری ترد، بدون چنگال‌پیچی دستی و مناسب سرخ‌کردن صنعتی.</p>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-num-box">۰۲</div>
+          <div class="point-detail">
+            <h4>پیراشکی دالبری نوستالژیک و گوشتی (۲۰ تا ۳۰ گرم)</h4>
+            <p>لبه‌های کنگره‌ای کاملاً یکنواخت، بدون باز شدن در فر یا روغن داغ، با استقبال فوق‌العاده بازار.</p>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-num-box">۰۳</div>
+          <div class="point-detail">
+            <h4>جوشباره، بورک و شیرینی‌های سنتی</h4>
+            <p>تولید سریع برای تامین هایپرمارکت‌ها، رستوران‌ها و خطوط تولید منجمد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-bottom-footer">
+      <div class="footer-slug">MODULAR MOLD MATRIX</div>
+      <div class="footer-brand">machinedesign.ir</div>
+    </div>
+  </article>
+
+  <!-- Slide 3 -->
+  <article class="slide bg-tech-grid" id="slide-3">
+    <div class="slide-top-header">
+      <div class="brand-mark"><span>Machine</span>Design</div>
+      <div class="slide-counter">03 / 04</div>
+    </div>
+    <div class="slide-body">
+      <div class="header-stack">
+        <div class="eyebrow-row">
+          <span class="category-pill">دوخت هوابند و بهداشت</span>
+          <span class="eyebrow-text">ZERO LEAKAGE</span>
+        </div>
+        <h2 class="slide-h2">دوخت ۱۰۰٪ هوابند + <span>شستشوی ۵ دقیقه‌ای</span></h2>
+      </div>
+      <div class="kpi-duo">
+        <div class="kpi-block">
+          <div class="kpi-val">۱۰۰ %</div>
+          <div class="kpi-lbl">آب‌بندی درز در روغن داغ</div>
+        </div>
+        <div class="kpi-block">
+          <div class="kpi-val">&lt; ۵ min</div>
+          <div class="kpi-lbl">شستشوی بدون ابزار در پایان شیفت</div>
+        </div>
+      </div>
+      <div class="editorial-box">
+        <p><strong>بدون پس دادن روغن!</strong> لبه‌های محصولات با فشار کالیبره‌شده درام چنان تمیز دوخت می‌خورند که موقع سرخ‌شدن حتی یک قطره پس نمی‌دهند.</p>
+        <p style="margin-top:6px; color:#9ca3af;">تمامی قطعات در تماس با غذا از استیل ۳۰۴ صنایع غذایی بوده و در کمتر از ۵ دقیقه بدون نیاز به هیچ ابزاری دمونتاژ و شسته می‌شوند.</p>
+      </div>
+    </div>
+    <div class="slide-bottom-footer">
+      <div class="footer-slug">HERMETIC SEAL // HYGIENE</div>
+      <div class="footer-brand">machinedesign.ir</div>
+    </div>
+  </article>
+
+  <!-- Slide 4 -->
+  <article class="slide bg-tech-grid" id="slide-4">
+    <div class="slide-top-header">
+      <div class="brand-mark"><span>Machine</span>Design</div>
+      <div class="slide-counter">04 / 04</div>
+    </div>
+    <div class="slide-body">
+      <div class="header-stack">
+        <div class="eyebrow-row">
+          <span class="category-pill">کاتالوگ و استعلام</span>
+          <span class="eyebrow-text">MOLD CATALOG</span>
+        </div>
+        <h2 class="slide-h2">کاتالوگ تصویری قالب‌ها <span>و نمونه محصولات</span></h2>
+      </div>
+      <div class="pillars-stack">
+        <div class="pillar-row">
+          <span class="pillar-num">۰۱</span>
+          <span>امکان سفارشی‌سازی فرم لبه و وزن قطعه متناسب با خط شما</span>
+        </div>
+        <div class="pillar-row">
+          <span class="pillar-num">۰۲</span>
+          <span>تعویض سریع هر قالب در کمتر از ۱۵ دقیقه توسط ۱ اپراتور</span>
+        </div>
+        <div class="pillar-row">
+          <span class="pillar-num">۰۳</span>
+          <span>موجودی دائم درام‌های قالب و گارانتی تعویض در تهران</span>
+        </div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-badge">MOLD CATALOG & SAMPLES</div>
+        <div class="cta-action">ارسال کلمه «قالب» در دایرکت</div>
+        <div class="cta-web">تماس مستقیم: ۰۹۳۵۸۶۸۹۸۲۹ | machinedesign.ir</div>
+      </div>
+    </div>
+    <div class="slide-bottom-footer">
+      <div class="footer-slug">CALL TO ACTION // MOLDS</div>
+      <div class="footer-brand">@h.vatan.doust</div>
+    </div>
+  </article>
+</body>
+</html>
