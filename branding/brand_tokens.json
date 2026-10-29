@@ -10,7 +10,15 @@
     "bale": "@machinedesign_ir",
     "phone": "+98 935 868 9829",
     "phone_fa": "۰۹۳۵ ۸۶۸ ۹۸۲۹",
-    "phone_raw": "09358689829"
+    "phone_raw": "09358689829",
+    "location_fa": "مشهد، برج سامان",
+    "location_en": "Mashhad, Saman Tower",
+    "capacity_rule_fa": "ظرفیت متغیر بین ۱,۰۰۰ تا ۱۰,۰۰۰ عدد در ساعت (متناسب با ابعاد محصول و چیدمان نیروی انسانی)",
+    "references": {
+      "canonical_machine": "D:/Machinedesign.ir/machinedesign-social-assets/campaigns/launch-dumpling-series/01_source_material/images/konbrit_150_canonical_reference.jpg",
+      "canonical_molds_mounted": "D:/Machinedesign.ir/machinedesign-social-assets/campaigns/launch-dumpling-series/01_source_material/images/konbrit_150_rotary_molds_mounted.jpg",
+      "canonical_molds_isolated": "D:/Machinedesign.ir/machinedesign-social-assets/campaigns/launch-dumpling-series/01_source_material/images/konbrit_150_rotary_molds_isolated.jpg"
+    }
   },
   "colors": {
     "neon_green": "#8ce70c",
