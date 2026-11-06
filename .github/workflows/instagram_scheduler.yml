@@ -1,0 +1,42 @@
+name: Autonomous Instagram Scheduler
+
+on:
+  schedule:
+    # Run every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  process-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Process Scheduled Posts
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+        run: |
+          python publish_scheduler.py
+
+      - name: Commit and push changes if queue updated
+        run: |
+          git config user.name "MachineDesign AutoScheduler"
+          git config user.email "actions@users.noreply.github.com"
+          if [[ -n $(git status --porcelain queue.json) ]]; then
+            git add queue.json
+            git commit -m "chore: update instagram queue status [skip ci]"
+            git push
+          else
+            echo "No queue changes to commit."
+          fi
