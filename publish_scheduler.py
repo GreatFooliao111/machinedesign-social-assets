@@ -2,6 +2,7 @@
 """
 MachineDesign.ir - Autonomous Instagram Scheduler via Composio MCP & GitHub Actions
 Reads queue.json, finds pending posts where scheduled_at <= now, and publishes them via Composio.
+Supports single images, video/reels, and multi-slide carousels.
 """
 
 import json
@@ -70,44 +71,83 @@ def call_composio_tool(tool_slug, arguments, account_id, api_key):
                     raise RuntimeError(f"RPC error: {data_json['error']}")
     raise RuntimeError("No valid response from Composio MCP endpoint")
 
-def publish_single_post(post, api_key):
-    """Publishes a single image, video, or reel to Instagram."""
+def publish_post(post, api_key):
+    """Publishes a single image, video/reel, or multi-slide carousel to Instagram."""
     acc_info = ACCOUNT_MAP.get(post.get("account"))
     if not acc_info:
         raise ValueError(f"Unknown account: {post.get('account')}")
     
     account_slug = acc_info["account"]
     ig_user_id = acc_info["ig_user_id"]
-    
     post_type = post.get("type", "image").lower()
-    container_args = {
-        "ig_user_id": ig_user_id,
-        "caption": post.get("caption", "")
-    }
-    
-    if post_type in ["reel", "video"]:
-        container_args["video_url"] = post["media_url"]
-        container_args["media_type"] = "REELS"
+
+    if post_type == "carousel":
+        media_urls = post.get("media_urls", [])
+        if len(media_urls) < 2:
+            raise ValueError("Carousels require at least 2 media URLs.")
+            
+        print(f"Creating carousel child containers for {len(media_urls)} slides...")
+        child_ids = []
+        for idx, url in enumerate(media_urls, 1):
+            print(f"  - Submitting slide {idx}/{len(media_urls)}: {url[:60]}...")
+            child_args = {
+                "ig_user_id": ig_user_id,
+                "image_url": url,
+                "is_carousel_item": True
+            }
+            child_resp = call_composio_tool("INSTAGRAM_POST_IG_USER_MEDIA", child_args, account_slug, api_key)
+            c_id = child_resp.get("id")
+            if not c_id:
+                raise RuntimeError(f"Failed to create child container {idx}: {child_resp}")
+            child_ids.append(str(c_id))
+            time.sleep(2)
+
+        print(f"Creating parent carousel container with children: {child_ids}...")
+        parent_args = {
+            "ig_user_id": ig_user_id,
+            "media_type": "CAROUSEL",
+            "children": child_ids,
+            "caption": post.get("caption", "")
+        }
+        parent_resp = call_composio_tool("INSTAGRAM_POST_IG_USER_MEDIA", parent_args, account_slug, api_key)
+        creation_id = parent_resp.get("id")
+        if not creation_id:
+            raise RuntimeError(f"Failed to create carousel parent container: {parent_resp}")
+
+    elif post_type in ["reel", "video"]:
+        container_args = {
+            "ig_user_id": ig_user_id,
+            "caption": post.get("caption", ""),
+            "video_url": post["media_url"],
+            "media_type": "REELS"
+        }
         if "cover_url" in post and post["cover_url"]:
             container_args["cover_url"] = post["cover_url"]
         if "share_to_feed" in post:
             container_args["share_to_feed"] = post["share_to_feed"]
+            
+        print(f"Creating Reel media container for {post['id']}...")
+        container_resp = call_composio_tool("INSTAGRAM_POST_IG_USER_MEDIA", container_args, account_slug, api_key)
+        creation_id = container_resp.get("id")
+        if not creation_id:
+            raise RuntimeError(f"Container creation failed: {container_resp}")
+        print("Waiting 30 seconds for video processing...")
+        time.sleep(30)
+
     else:
-        container_args["image_url"] = post["media_url"]
-    
-    print(f"Creating media container for {post['id']} ({post_type})...")
-    container_resp = call_composio_tool("INSTAGRAM_POST_IG_USER_MEDIA", container_args, account_slug, api_key)
-    creation_id = container_resp.get("id")
-    if not creation_id:
-        raise RuntimeError(f"Container creation failed, response: {container_resp}")
-    
-    print(f"Container created with ID: {creation_id}. Waiting for processing...")
-    if post_type in ["reel", "video"]:
-        time.sleep(30)  # Wait for Meta video transcoding
-    else:
+        container_args = {
+            "ig_user_id": ig_user_id,
+            "caption": post.get("caption", ""),
+            "image_url": post["media_url"]
+        }
+        print(f"Creating single image container for {post['id']}...")
+        container_resp = call_composio_tool("INSTAGRAM_POST_IG_USER_MEDIA", container_args, account_slug, api_key)
+        creation_id = container_resp.get("id")
+        if not creation_id:
+            raise RuntimeError(f"Container creation failed: {container_resp}")
         time.sleep(5)
-    
-    print(f"Publishing container {creation_id}...")
+
+    print(f"Publishing container {creation_id} to {post.get('account')}...")
     publish_args = {
         "ig_user_id": ig_user_id,
         "creation_id": str(creation_id),
@@ -154,7 +194,7 @@ def main():
         if sched_time <= now:
             print(f"--> Post {post.get('id')} is due (Scheduled: {sched_time_str}, Current: {now.isoformat()})")
             try:
-                published_id = publish_single_post(post, api_key)
+                published_id = publish_post(post, api_key)
                 post["status"] = "published"
                 post["published_at"] = datetime.now(timezone.utc).isoformat()
                 post["media_id"] = published_id
