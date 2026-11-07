@@ -63,7 +63,14 @@ def call_composio_tool(tool_slug, arguments, account_id, api_key):
                         res = parsed["data"]["results"][0]
                         if "error" in res and res["error"]:
                             raise RuntimeError(f"Tool error: {res['error']}")
+                        resp_obj = res.get("response", {})
+                        if isinstance(resp_obj, dict):
+                            data_obj = resp_obj.get("data", {})
+                            if isinstance(data_obj, dict) and "id" in data_obj:
+                                return data_obj
+                            return resp_obj
                         return res.get("response_data", {})
+
                     elif not parsed.get("successful"):
                         err = parsed.get("error") or parsed.get("data", {}).get("results", [{}])[0].get("error")
                         raise RuntimeError(f"Composio execution failed: {err}")
