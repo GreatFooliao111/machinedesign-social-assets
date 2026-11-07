@@ -14,5 +14,21 @@
     "status": "pending",
     "published_at": null,
     "media_id": null
+  },
+  {
+    "id": "carousel_02_sunday_dough",
+    "account": "h.vatan.doust",
+    "type": "carousel",
+    "media_urls": [
+      "https://raw.githubusercontent.com/GreatFooliao111/machinedesign-social-assets/main/campaigns/launch-dumpling-series/02_generated_visuals/carousel_02_sunday_dough/slide_01.jpg",
+      "https://raw.githubusercontent.com/GreatFooliao111/machinedesign-social-assets/main/campaigns/launch-dumpling-series/02_generated_visuals/carousel_02_sunday_dough/slide_02.jpg",
+      "https://raw.githubusercontent.com/GreatFooliao111/machinedesign-social-assets/main/campaigns/launch-dumpling-series/02_generated_visuals/carousel_02_sunday_dough/slide_03.jpg",
+      "https://raw.githubusercontent.com/GreatFooliao111/machinedesign-social-assets/main/campaigns/launch-dumpling-series/02_generated_visuals/carousel_02_sunday_dough/slide_04.jpg"
+    ],
+    "caption": "چرا خمیر پیراشکی موقع نورد پاره میشه یا زیر دستگاه سوراخ میندازه؟ 🤔🥟\n\nبزرگ‌ترین چالش تولیدکنندگان پیراشکی با دستگاه‌های وارداتی، تفاوت گلوتن آرد ایران با آردهای خارجیه!\nوقتی گلوتن خمیر به درستی استراحت نکنه یا دستگاه به جای نورد تدریجی، از ماردون پرفشار استفاده کنه، بافت پروتئینی خمیر پاره میشه و تمام روغن جذب ملات پیراشکی میشه.\n\n⚙️ راهکار مهندسی ماشین Konbrit KBDM-150:\nبه جای ماردون‌های مخرب، خمیر از ۳ جفت غلتک نورد متوالی (فشرده‌ساز، میانی و کالیبراسیون دقیق ۰.۸ میلی‌متر) عبور می‌کنه؛ درست مثل کار یک نانوای کهنه‌کار با وردنه دستی، بدون کوچک‌ترین کشیدگی یا تنش برشی!\n\n💎 ۳ قلق طلایی ما برای خریداران:\n• آموزش رایگان فرمولاسیون نسبت جذب آب متناسب با آرد نول ایرانی\n• تنظیم کشسانی خمیر بدون نیاز به بهبوددهنده‌های شیمیایی گران‌قیمت\n• پیراشکی‌های غول‌پیکر تا ۱۵ سانتی‌متر با بافت لطیف و دوخت کاملاً آب‌بند\n\n🤝 تست حضوری پیش از خرید:\nبا آرد و فرمولاسیون کارگاه خودتان به شوروم ما در برج سامان مشهد بیایید و تست زنده خمیر را از نزدیک ببینید!\n✅ ۱ سال گارانتی رسمی + ۱۰ سال تامین قطعات و قالب‌ها\n\n📩 برای دریافت اطلاعات فنی و راهنمای خمیرگیری، کلمه «خمیر» را دایرکت ارسال کنید یا تماس بگیرید:\n👨‍🔧 مهندس حسین وطن‌دوست | 📞 ۰۹۳۵۸۶۸۹۸۲۹\n🏢 مشهد، میدان جانباز، برج اداری سامان\n⚙️ طراحی و نظارت مهندسی: @machinedesign.ir\n\n#پیراشکی #خمیر_پیراشکی #ماشین_دیزاین #خط_تولید #صنایع_غذایی",
+    "scheduled_at": "2026-11-09T07:30:00Z",
+    "status": "pending",
+    "published_at": null,
+    "media_id": null
   }
 ]
